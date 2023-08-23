@@ -20,4 +20,4 @@ set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wno-unused-function -O2 ${CMAKE_CXX_FLAGS} $
 set(CMAKE_EXECUTABLE_SUFFIX ".elf")
 
 add_executable(evc-transfer-tool main.cpp EVCSaveFile.cpp EVCSaveFile.h ISFS.cpp ISFS.h crc32.cpp crc32.h)
-target_link_libraries(evc-transfer-tool wiiuse bte fat ogc m)
+target_link_libraries(evc-transfer-tool wiiuse bte fat ogc m patcher)

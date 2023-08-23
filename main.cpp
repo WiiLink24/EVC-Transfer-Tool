@@ -4,6 +4,10 @@
 #include <unistd.h>
 #include <stdexcept>
 
+extern "C" {
+#include <libpatcher/libpatcher.h>
+}
+
 #include "EVCSaveFile.h"
 
 static void* xfb = nullptr;
@@ -29,6 +33,13 @@ int main() {
   std::cout << std::endl << std::endl << std::endl;
   std::cout << "WiiLink EVC Transfer Tool - (c) 2023 WiiLink" << std::endl;
   std::cout << "v0.1" << std::endl << std::endl;
+
+  bool success = apply_patches();
+  if (!success) {
+    std::cout << "Failed to apply patches!" << std::endl;
+    sleep(5);
+    WII_ReturnToMenu();
+  }
 
   EVCSaveFile save_file{};
 
