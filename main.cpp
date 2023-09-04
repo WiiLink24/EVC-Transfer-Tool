@@ -25,8 +25,7 @@ int main() {
   VIDEO_Flush();
   VIDEO_WaitVSync();
   if (rmode->viTVMode & VI_NON_INTERLACE) VIDEO_WaitVSync();
-
-  WPAD_Init();
+  
   ISFS_Initialize();
   CONF_Init();
 
@@ -40,7 +39,8 @@ int main() {
     sleep(5);
     WII_ReturnToMenu();
   }
-
+  WPAD_Init();
+  
   EVCSaveFile save_file{};
 
   if (save_file.Error().empty())
