@@ -25,13 +25,10 @@ int main() {
   VIDEO_Flush();
   VIDEO_WaitVSync();
   if (rmode->viTVMode & VI_NON_INTERLACE) VIDEO_WaitVSync();
-  
-  ISFS_Initialize();
-  CONF_Init();
 
   std::cout << std::endl << std::endl << std::endl;
   std::cout << "WiiLink EVC Transfer Tool - (c) 2023 WiiLink" << std::endl;
-  std::cout << "v0.1" << std::endl << std::endl;
+  std::cout << "v0.2" << std::endl << std::endl;
 
   bool success = apply_patches();
   if (!success) {
@@ -39,6 +36,9 @@ int main() {
     sleep(5);
     WII_ReturnToMenu();
   }
+
+  ISFS_Initialize();
+  CONF_Init();
   WPAD_Init();
   
   EVCSaveFile save_file{};
